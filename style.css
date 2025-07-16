@@ -265,7 +265,8 @@ nav .container {
 
 .social-links a {
   font-size: 1.5rem;
-  color: var(--dark-color);
+  color: red;
+
   transition: color 0.3s ease;
 }
 
