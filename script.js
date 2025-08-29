@@ -1,111 +1,52 @@
-// Mobile Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
+// NAVBAR TOGGLE
+const navMenu = document.getElementById('nav-menu');
+const toggleBtn = document.getElementById('toggleBtn');
+toggleBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    toggleBtn.innerHTML = navMenu.classList.contains('active') ? '<i class="uil uil-multiply"></i>' : '<i class="uil uil-bars"></i>';
 });
 
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-  });
-});
-
-// Dark/Light Mode Toggle
-const modeToggle = document.createElement('div');
-modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-modeToggle.classList.add('mode-toggle');
-document.body.appendChild(modeToggle);
-
-modeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  const icon = modeToggle.querySelector('i');
-  icon.classList.toggle('fa-moon');
-  icon.classList.toggle('fa-sun');
-});
-
-// Smooth Scrolling for Anchor Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
-});
-
-// Form Validation
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = contactForm.querySelector('input[type="text"]');
-    const email = contactForm.querySelector('input[type="email"]');
-    const message = contactForm.querySelector('textarea');
-
-    if (!name.value || !email.value || !message.value) {
-      alert('Please fill all fields!');
-      return;
-    }
-
-    // Simulate form submission (replace with actual API call)
-    alert(`Thanks, ${name.value}! Your message has been sent.`);
-    contactForm.reset();
-  });
+// SCROLL TO SECTION
+function scrollToTarget(id) {
+    const target = document.getElementById(id);
+    target.scrollIntoView({ behavior: 'smooth' });
 }
+function scrollToHome(){ scrollToTarget('home'); }
+function scrollToAbout(){ scrollToTarget('about'); }
+function scrollToProjects(){ scrollToTarget('projects'); }
+function scrollToContact(){ scrollToTarget('contact'); }
 
-// Animate sections on scroll
-const animateOnScroll = () => {
-  const sections = document.querySelectorAll('section');
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if (sectionTop < windowHeight - 100) {
-      section.style.opacity = '1';
-      section.style.transform = 'translateY(0)';
+// SCROLLREVEAL
+ScrollReveal().reveal('.featured-text, .profile-image', { duration:1500, distance:'50px', origin:'bottom', reset:true });
+ScrollReveal().reveal('.skills span', { duration:1500, interval:100 });
+ScrollReveal().reveal('.project-box', { duration:1500, distance:'50px', origin:'bottom', reset:true });
+ScrollReveal().reveal('.contact-info, .contact-form', { duration:1500, distance:'50px', origin:'bottom', reset:true });
+
+// EMAILJS FORM
+emailjs.init("gZBrTo_lOBpeEXt_s");
+document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    emailjs.sendForm('service_k8lbwkf','template_oqkld7p', this)
+    .then(()=> alert("✅ Message sent successfully!"))
+    .catch(err => alert("❌ Failed: "+JSON.stringify(err)));
+});
+// ---------- TO-DO LIST ----------
+const todoInput = document.getElementById('todo-input');
+const addTaskBtn = document.getElementById('add-task');
+const todoList = document.getElementById('todo-list');
+
+addTaskBtn.addEventListener('click', () => {
+    const task = todoInput.value.trim();
+    if(task){
+        const li = document.createElement('li');
+        li.innerHTML = `${task} <button>Delete</button>`;
+        li.addEventListener('click', () => li.classList.toggle('completed'));
+        li.querySelector('button').addEventListener('click', e => {
+            e.stopPropagation();
+            li.remove();
+        });
+        todoList.appendChild(li);
+        todoInput.value = '';
     }
-  });
-};
-
-// Set initial state for animation
-document.querySelectorAll('section').forEach(section => {
-  section.style.opacity = '0';
-  section.style.transform = 'translateY(20px)';
-  section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
 });
 
-window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
-
-// Optional: Fetch GitHub Projects (replace with your username)
-const fetchGitHubProjects = async () => {
-  try {
-    const response = await fetch('https://api.github.com/users/YOUR_GITHUB_USERNAME/repos?sort=updated');
-    const repos = await response.json();
-    const projectGrid = document.querySelector('.project-grid');
-
-    if (projectGrid && repos.length > 0) {
-      projectGrid.innerHTML = ''; // Clear placeholder projects
-      repos.slice(0, 3).forEach(repo => {
-        projectGrid.innerHTML += `
-          <div class="project-card">
-            <img src="images/project-placeholder.jpg" alt="${repo.name}">
-            <h3>${repo.name.replace(/-/g, ' ')}</h3>
-            <p>${repo.description || 'No description available.'}</p>
-            <div class="project-links">
-              <a href="${repo.html_url}" target="_blank"><i class="fab fa-github"></i> Code</a>
-              ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
-            </div>
-          </div>
-        `;
-      });
-    }
-  } catch (error) {
-    console.error('Failed to fetch GitHub projects:', error);
-  }
-};
-
-// Uncomment to enable GitHub API (replace YOUR_GITHUB_USERNAME)
-// fetchGitHubProjects();
