@@ -25,7 +25,7 @@ Here are some of my recent projects:
 You can reach me via:  
 - Email: merry.mq@gmail.com  
 - LinkedIn: [Maryam Qayyum](https://www.linkedin.com/in/maryam-qayyum-3b452b374/)  
-- GitHub: [MaryamQayyum07]([https://www.github.com/maryam-mq/])
+- GitHub: [Maryam Qayyum]([https://github.com/maryam-mq])
 
 ---
 
