@@ -1,171 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>John Doe | Web Developer</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
- <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <title>Maryam Qayyum | Portfolio</title>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <a href="#home" class="logo">JD</a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="hamburger">
-        <i class="fas fa-bars"></i>
-      </div>
-    </div>
-  </nav>
+    <!-- NAVBAR -->
+    <nav id="header">
+        <div class="nav-logo">Maryam<span>Qayyum</span></div>
+        <div class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a class="nav-link home active-link" onclick="scrollToHome()">Home</a></li>
+                <li><a class="nav-link about" onclick="scrollToAbout()">About</a></li>
+                <li><a class="nav-link projects" onclick="scrollToProjects()">Projects</a></li>
+                <li><a class="nav-link contact" onclick="scrollToContact()">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-menu-btn" id="toggleBtn"><i class="uil uil-bars"></i></div>
+    </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <h1>Hi, I'm <span>John Doe</span></h1>
-      <h2>Frontend Developer</h2>
-      <p>I build beautiful, responsive websites with modern technologies.</p>
-      <a href="#projects" class="btn">View My Work</a>
-    </div>
-  </section>
+    <!-- HERO SECTION -->
+    <section class="landing-page" id="home">
+        <div class="featured-text">
+            <h1>Hi! I’m <span>Maryam Qayyum</span></h1>
+            <p>I’m a passionate Front-End Developer turning ideas into clean, responsive, and interactive web experiences.</p>
+            <div class="featured-buttons">
+                <button class="btn" onclick="scrollToContact()">Contact Me</button>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/maryam-mq"><i class="uil uil-github-alt"></i></a>
+                <a href="https://www.linkedin.com/in/maryam-qayyum-3b452b374/"><i class="uil uil-linkedin-alt"></i></a>
+                <!-- <a href="#"><i class="uil uil-instagram"></i></a> -->
+            </div>
+        </div>
+        <div class="profile-image">
+            <img src="image.jpeg" alt="Maryam Qayyum">
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <div class="about-content">
-        <div class="about-img">
-          <img src="images/profile.jpg" alt="John Doe">
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2>About <span>Me</span></h2>
+        <p>I specialize in creating responsive, interactive, and visually appealing websites using HTML, CSS, JavaScript, and React. I focus on clean code, user-friendly UI, and smooth functionality to deliver an exceptional experience.</p>
+        <div class="skills">
+            <h3>Skills</h3>
+            <div class="skill-list">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>React.js</span>
+                <span>Node.js</span>
+                <span>MongoDB</span>
+                <span>Firebase</span>
+            </div>
         </div>
-        <div class="about-text">
-          <p>I'm a passionate web developer with 3+ years of experience specializing in React, JavaScript, and CSS. I love turning ideas into functional, user-friendly applications.</p>
-          <p>When I'm not coding, I enjoy hiking and photography.</p>
-          <a href="#" class="btn">Download Resume</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <h2>My Projects</h2>
-      <div class="project-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-          <img src="images/project1.jpg" alt="E-Commerce App">
-          <h3>E-Commerce App</h3>
-          <p>Built with React, Node.js, and MongoDB. Features cart functionality and payment integration.</p>
-          <div class="project-links">
-            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
-            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-          </div>
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="project-box">
+                <i class="uil uil-check-square"></i>
+                <h3>To-Do List App</h3>
+                <p>A responsive task manager app built with HTML, CSS, and JavaScript. Add, delete, and manage tasks efficiently with a modern design.</p>
+                <a href="https://github.com/maryam-mq/to-do-list"target="_blank" class="view-project-button">View Project</a>
+            </div>
+            <div class="project-box">
+                <i class="uil uil-image"></i>
+                <h3>Responsive Image Gallery</h3>
+                <p>A modern and responsive image gallery created with HTML, CSS, and JavaScript. Works perfectly on all screen sizes.</p>
+                <a href="https://github.com/maryam-mq/Responsive-img-gallery"target="_blank" class="view-project-button">View Project</a>
+            </div>
         </div>
+    </section>
 
-        <!-- Project 2 -->
-        <div class="project-card">
-          <img src="images/project2.jpg" alt="Weather Dashboard">
-          <h3>Weather Dashboard</h3>
-          <p>Real-time weather data using the OpenWeather API. Built with JavaScript and Bootstrap.</p>
-          <div class="project-links">
-            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
-            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-          </div>
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <p>Have a project in mind? Let's work together!</p>
+        <div class="contact-row">
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <p><i class="uil uil-envelope"></i> merry.mq19@gmail.com</p>
+                <div class="contact-social-icons">
+                    <a href="https://github.com/maryam-mq"><i class="uil uil-github-alt"></i></a>
+                    <a href="https://www.linkedin.com/in/maryam-qayyum-3b452b374/"><i class="uil uil-linkedin-alt"></i></a>
+                    <!-- <a href="#"><i class="uil uil-instagram"></i></a> -->
+                </div>
+            </div>
+            <form class="contact-form" id="contact-form">
+                <input type="text" name="user_name" placeholder="Name" required>
+                <input type="email" name="user_email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
         </div>
+    </section>
 
-        <!-- Project 3 -->
-        <div class="project-card">
-          <img src="images/project3.jpg" alt="Task Manager">
-          <h3>Task Manager</h3>
-          <p>A CRUD application with Firebase authentication. Built with Vue.js.</p>
-          <div class="project-links">
-            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
-            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Maryam Qayyum. All rights reserved.</p>
+    </footer>
 
-  <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <div class="container">
-      <h2>Skills & Tools</h2>
-      <div class="skills-grid">
-        <div class="skill-item">
-          <i class="fab fa-html5"></i>
-          <p>HTML5</p>
-        </div>
-        <div class="skill-item">
-          <i class="fab fa-css3-alt"></i>
-          <p>CSS3</p>
-        </div>
-        <div class="skill-item">
-          <i class="fab fa-js"></i>
-          <p>JavaScript</p>
-        </div>
-        <div class="skill-item">
-          <i class="fab fa-react"></i>
-          <p>React</p>
-        </div>
-        <div class="skill-item">
-          <i class="fab fa-git-alt"></i>
-          <p>Git</p>
-        </div>
-        <div class="skill-item">
-          <i class="fab fa-node-js"></i>
-          <p>Node.js</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>Get In Touch</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <p><i class="fas fa-envelope"></i> john.doe@example.com</p>
-          <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
-          <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-        <form class="contact-form">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2023 John Doe. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Script for mobile menu -->
-  <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
+    <!-- JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
 </body>
 </html>
